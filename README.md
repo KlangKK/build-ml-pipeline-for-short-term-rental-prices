@@ -261,6 +261,7 @@ notebook can be understood by other people like your colleagues
    
    profile = pandas_profiling.ProfileReport(df)
    profile.to_widgets()
+   df.profile_report()
    ```
    what do you notice? Look around and see what you can find. 
    
