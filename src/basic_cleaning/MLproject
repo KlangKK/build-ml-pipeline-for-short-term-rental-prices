@@ -5,18 +5,35 @@ entry_points:
   main:
     parameters:
 
-      parameter1:
-        description: ## ADD DESCRIPTION
+      input_artifact:
+        description: Raw dataset from W&B
         type: string
 
-      parameter2:
-        description: ## ADD DESCRIPTION
+      output_artifact:
+        description: Cleaned dataset to be exported to W&B
         type: string
 
-      parameter3:
-        description: ## ADD DESCRIPTION
+      output_description:
+        description: Description of the output artifact
+        type: string
+
+      output_type:
+        description: Type of output
+        type: string
+
+      min_price:
+        description: Minimum price to remove outliers or null values
+        type: string
+
+      max_price:
+        description: Maximum price to remove outlier or null values
         type: string
 
 
     command: >-
-        python run.py  --parameter1 {parameter1}  --parameter2 {parameter2}  --parameter3 {parameter3} 
+        python run.py  --input_artifact {input_artifact}  \
+                       --output_artifact {output_artifact}  \
+                       --output_description {output_description} \
+                       --output_type {output_type}  \
+                       --min_price {min_price}  \
+                       --max_price {max_price} 
