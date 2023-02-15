@@ -1,3 +1,11 @@
+## W&B project link
+`https://wandb.ai/klangkk/nyc_airbnb`
+
+## GitHub project link
+`https://github.com/KlangKK/build-ml-pipeline-for-short-term-rental-prices`
+
+---
+
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 You are working for a property management company renting rooms and properties for short periods of 
 time on various rental platforms. You need to estimate the typical price for a given property based 
@@ -573,3 +581,4 @@ you have trained your new model on the new data.
 ## License
 
 [License](LICENSE.txt)
+
