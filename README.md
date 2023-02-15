@@ -182,7 +182,12 @@ to fix the problem. However, sometimes this does not happen, especially if the p
 In that case, you might want to clean up all conda environments created by `mlflow` and try again. In order to do so,
 you can get a list of the environments you are about to remove by executing:
 
-```
+```shell
+# conda info env
+# grep = search = global regular expression print
+# grep mlflow = search for mlflow
+# cut -f1 = cut from 1st 
+# -d" " = delimiter " "
 > conda info --envs | grep mlflow | cut -f1 -d" "
 ```
 
@@ -256,6 +261,7 @@ notebook can be understood by other people like your colleagues
    
    profile = pandas_profiling.ProfileReport(df)
    profile.to_widgets()
+   df.profile_report()
    ```
    what do you notice? Look around and see what you can find. 
    
