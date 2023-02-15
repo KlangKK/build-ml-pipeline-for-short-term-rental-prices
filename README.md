@@ -1,8 +1,8 @@
 ## W&B project link
-[[https://wandb.ai/klangkk/nyc_airbnb]]
+https://wandb.ai/klangkk/nyc_airbnb
 
 ## GitHub project link
-[[https://github.com/KlangKK/build-ml-pipeline-for-short-term-rental-prices]]
+https://github.com/KlangKK/build-ml-pipeline-for-short-term-rental-prices
 
 ---
 
