@@ -4,9 +4,9 @@ This script splits the provided dataframe in test and remainder
 """
 import argparse
 import logging
+import tempfile
 import pandas as pd
 import wandb
-import tempfile
 from sklearn.model_selection import train_test_split
 from wandb_utils.log_artifact import log_artifact
 
@@ -15,6 +15,10 @@ logger = logging.getLogger()
 
 
 def go(args):
+    '''
+    Download input artifact
+    Save to output files to training and testing sets
+    '''
 
     run = wandb.init(job_type="train_val_test_split")
     run.config.update(args)
@@ -56,16 +60,23 @@ if __name__ == "__main__":
     parser.add_argument("input", type=str, help="Input artifact to split")
 
     parser.add_argument(
-        "test_size", type=float, help="Size of the test split. Fraction of the dataset, or number of items"
-    )
+        "test_size",
+        type=float,
+        help="Size of the test split. Fraction of the dataset, or number of items")
 
     parser.add_argument(
-        "--random_seed", type=int, help="Seed for random number generator", default=42, required=False
-    )
+        "--random_seed",
+        type=int,
+        help="Seed for random number generator",
+        default=42,
+        required=False)
 
     parser.add_argument(
-        "--stratify_by", type=str, help="Column to use for stratification", default='none', required=False
-    )
+        "--stratify_by",
+        type=str,
+        help="Column to use for stratification",
+        default='none',
+        required=False)
 
     args = parser.parse_args()
 

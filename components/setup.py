@@ -1,3 +1,6 @@
+'''
+Utilities for interacting with Weights and Biases and mlflow
+'''
 from setuptools import setup
 
 
