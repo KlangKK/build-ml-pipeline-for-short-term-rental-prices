@@ -1,6 +1,12 @@
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 A Udacity Project on MLOps
 
+Done by: kk
+
+Date: Feb 2023
+
+---
+
 ## W&B project link
 https://wandb.ai/klangkk/nyc_airbnb
 
@@ -50,7 +56,7 @@ This project is to build such a pipeline.
 ---
 
 ## Starter Kit Boilerplate code
-The original project instructions and starter kit can be retrieved from [https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git) 
+The original project instructions and starter kit can be retrieved from [here](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git) 
 
 ---
 
