@@ -214,7 +214,7 @@ The data processing done as part of the EDA will be transferred to a new ``basic
 After the cleaning, it is a good practice to put some tests that verify that the data does not contain surprises. One of the tests will compare the distribution of the current data sample with a reference, to ensure that there is no unexpected change. Therefore, a "reference dataset" is defined first.The latest artifact ``clean_sample.csv`` on W&B is tagged as the reference dataset. 
 
 ## Data splitting
-Use the provided component called ``train_val_test_split`` to extract and segregate the test set. Add it to the pipeline then run the pipeline. 
+Use the provided component called ``train_val_test_split`` to extract and segregate the test set and training set.
 
 ## Train Pipeline
 Use the provided component called ``train_random_forest`` to train and save the interference pipeline as a mlflow.sklearn model in the directory "random_forest_dir" and upload to W&B. Feature importance is plotted and uploaded to W&B. Metrics summary is calculated and uploaded to W&B too.
