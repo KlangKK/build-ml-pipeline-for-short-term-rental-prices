@@ -15,14 +15,14 @@ entry_points:
 
       kl_threshold:
         description: Threshold for the KL divergence test on the neighborhood group column
-        type: float
+        type: string
 
       min_price:
         description: Minimum accepted price
-        type: float
+        type: string
 
       max_price:
         description: Maximum accepted price
-        type: float
+        type: string
 
     command: "pytest . -vv --csv {csv} --ref {ref} --kl_threshold {kl_threshold} --min_price {min_price} --max_price {max_price}"

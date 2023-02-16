@@ -11,7 +11,7 @@ _steps = [
     "download",
     "basic_cleaning",
     "data_check",
-    "data_split",
+    "train_val_test_split",
     "train_random_forest",
     # NOTE: We do not include this in the steps so it is not run by mistake.
     # You first need to promote a model export to "prod" before you can run this,
@@ -50,9 +50,6 @@ def go(config: DictConfig):
             )
 
         if "basic_cleaning" in active_steps:
-            ##################
-            # Implement here #
-            ##################
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(),"src","basic_cleaning"),
                 "main",
@@ -67,9 +64,6 @@ def go(config: DictConfig):
             )
 
         if "data_check" in active_steps:
-            ##################
-            # Implement here #
-            ##################
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(),"src","data_check"),
                 "main",
@@ -82,10 +76,7 @@ def go(config: DictConfig):
                 },
             )
 
-        if "data_split" in active_steps:
-            ##################
-            # Implement here #
-            ##################
+        if "train_val_test_split" in active_steps:
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/train_val_test_split",
                 "main",
@@ -107,9 +98,6 @@ def go(config: DictConfig):
             # NOTE: use the rf_config we just created as the rf_config parameter for the train_random_forest
             # step
 
-            ##################
-            # Implement here #
-            ##################
             _ = mlflow.run(
                 os.path.join(hydra.utils.get_original_cwd(),"src","train_random_forest"),
                 "main",
@@ -125,10 +113,6 @@ def go(config: DictConfig):
             )
 
         if "test_regression_model" in active_steps:
-
-            ##################
-            # Implement here #
-            ##################
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/test_regression_model",
                 "main",

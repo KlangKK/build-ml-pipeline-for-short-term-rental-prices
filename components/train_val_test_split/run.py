@@ -54,11 +54,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Split test and remainder")
 
     parser.add_argument(
-        "input", type=str, help="Input artifact to split"
+        "--input", type=str, help="Input artifact to split"
     )
 
     parser.add_argument(
-        "test_size", type=float, help="Size of the test split. Fraction of the dataset, or number of items"
+        "--test_size", type=float, help="Size of the test split. Fraction of the dataset, or number of items"
     )
 
     parser.add_argument(

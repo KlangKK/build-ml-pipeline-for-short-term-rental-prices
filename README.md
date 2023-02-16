@@ -1,3 +1,6 @@
+# Build an ML Pipeline for Short-Term Rental Prices in NYC
+A Udacity Project on MLOps
+
 ## W&B project link
 https://wandb.ai/klangkk/nyc_airbnb
 
@@ -6,13 +9,165 @@ https://github.com/KlangKK/build-ml-pipeline-for-short-term-rental-prices
 
 ---
 
-# Build an ML Pipeline for Short-Term Rental Prices in NYC
-You are working for a property management company renting rooms and properties for short periods of 
-time on various rental platforms. You need to estimate the typical price for a given property based 
-on the price of similar properties. Your company receives new data in bulk every week. The model needs 
-to be retrained with the same cadence, necessitating an end-to-end pipeline that can be reused.
+## Project Brief
 
-In this project you will build such a pipeline.
+The project is for a property management company renting rooms and properties for short periods of time on various rental platforms. 
+
+The aim is to estimate the typical price for a given property based 
+on the price of similar properties. 
+
+New data is received in bulk every week. 
+
+The model needs to be retrained with the same cadence, necessitating an end-to-end pipeline that can be reused.
+
+This project is to build such a pipeline.
+
+## Starter Kit Boilerplate code
+The original project instructions and starter kit can be retrieved from [https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git) 
+
+## README
+This README is crafted to document important steps of the project.
+
+---
+
+## Tools used
+- Conda for environment management
+- Hydra for configuration management
+- Cookie Cutter for creating boilerplate code stubs for new pipeline components
+- MLflow for reproduction and management of pipeline processes
+- Weights and Biases for artifact and execution tracking
+- Pandas for data analysis
+- Scikit-Learn for data modeling
+
+---
+
+## Environment Setup (Conda)
+
+1. Clone the git repo
+```bash
+git clone https://github.com/KlangKK/build-ml-pipeline-for-short-term-rental-prices
+
+```
+2. Go into repo
+```bash
+cd build-ml-pipeline-for-short-term-rental-prices
+```
+3. Make sure to have conda installed and ready, then create a new environment using the ``environment.yml``
+file provided in the root of the repository and activate it:
+
+```bash
+> conda env create -f environment.yml
+> conda activate nyc_airbnb_dev
+```
+
+---
+
+## Parameters Configuration (Hydra)
+NOTE: Any parameter should NOT be hardcoded when writing the pipeline. All the parameters should be accessed from the configuration file.
+
+As usual, the parameters controlling the pipeline are defined in the ``config.yaml`` file defined in the root of the starter kit. 
+
+Hydra is used to manage this configuration file. 
+
+This file is only read by the ``main.py`` script (i.e., the pipeline) and its content is available with the ``go`` function in ``main.py`` as the ``config`` dictionary. 
+
+For example, the name of the project is contained in the ``project_name`` key under the ``main`` section in the configuration file. It can be accessed from the ``go`` function as ``config["main"]["project_name"]``.
+
+---
+
+## Cookie Cutter
+A cookie cutter template has been provided. It can be used to create boilerplate code stubs for new pipeline components.
+
+Run the cookiecutter and enter the required information, and a new component will be created including the `conda.yml` file, the `MLproject` file as well as the script.
+
+These can then be modified as needed, instead of starting from scratch.
+
+For example:
+
+```bash
+> cookiecutter cookie-mlflow-step -o src
+
+step_name [step_name]: basic_cleaning
+script_name [run.py]: run.py
+job_type [my_step]: basic_cleaning
+short_description [My step]: This steps cleans the data
+long_description [An example of a step using MLflow and Weights & Biases]: Performs basic cleaning on the data and save the results in Weights & Biases
+parameters [parameter1,parameter2]: parameter1,parameter2,parameter3
+```
+
+This will create a step called ``basic_cleaning`` under the directory ``src`` with the following structure:
+
+```bash
+> ls src/basic_cleaning/
+conda.yml  MLproject  run.py
+```
+
+The files created can be modified:
+- the script (``run.py``), 
+- the conda environment (``conda.yml``) and 
+- the project definition (``MLproject``).
+
+The script ``run.py`` will receive the input parameters ``parameter1``, ``parameter2``,``parameter3`` and it will be called like:
+
+```bash
+> mlflow run src/step_name -P parameter1=1 -P parameter2=2 -P parameter3="test"
+```
+
+---
+
+## MLflow Running the entire pipeline or just a selection of steps
+In order to run the pipeline, execute the following at the base folder:
+
+```bash
+>  mlflow run .
+```
+This will run the entire pipeline.
+
+When developing it is useful to be able to run one step at the time. 
+
+The `main.py` is written so that the steps are defined at the top of the file, in the ``_steps`` list, and can be selected by using the `steps` parameter on the command line:
+
+For example, to run only the ``download`` step: 
+
+```bash
+> mlflow run . -P steps=download
+```
+
+For example, to run the ``download`` and the ``basic_cleaning`` steps:
+```bash
+> mlflow run . -P steps=download,basic_cleaning
+```
+
+Any other parameter in the configuration file can be overriden using the Hydra syntax, by providing it as a ``hydra_options`` parameter. 
+
+For example, to set the parameter modeling -> random_forest -> n_estimators to 10 and etl->min_price to 50:
+
+```bash
+> mlflow run . \
+  -P steps=download,basic_cleaning \
+  -P hydra_options="modeling.random_forest.n_estimators=10 etl.min_price=50"
+```
+---
+
+## Weights and Biases API key
+Log in to Weights & Biases and get API key from W&B by going to 
+[https://wandb.ai/authorize](https://wandb.ai/authorize) and click on the + icon (copy to clipboard), then paste the API key into this command:
+
+```bash
+> wandb login [your API key]
+```
+
+A message similar to should be displayed:
+```
+wandb: Appending key for api.wandb.ai to your netrc file: /home/[your username]/.netrc
+```
+
+---
+
+
+
+## Exploratory Data Analysis (EDA)
+
 
 ## Table of contents
 
